@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TMDBSwift
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
@@ -17,7 +18,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        TMDBConfig.apikey = "ac6045995596442d0ad6f068b91f0cee"
         movieTitleTF.delegate = self
+        getMovie()
     }
     
     // MARK: UITextFieldDelegate
@@ -35,5 +38,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func setDefaultLabelText(_ sender: UIButton) {
         movieTitleLabel.text = "Default Text"
     }
+    
+    func getMovie() {
+        MovieMDB.movie(movieID: 7984, language: "en"){
+            apiReturn, movie in
+            if let movie = movie{
+                print(movie.title)
+                print(movie.revenue)
+                print(movie.genres[0].name)
+                print(movie.production_companies?[0].name)
+                self.movieTitleLabel.text = movie.title!
+            }
+        }
+    }
 }
-
