@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SVy-ZQ-BgJ">
-                                <rect key="frame" x="20" y="40" width="335" height="96.5"/>
+                                <rect key="frame" x="20" y="40" width="335" height="416.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSH-bp-r7P">
                                         <rect key="frame" x="0.0" y="0.0" width="83.5" height="20.5"/>
@@ -34,12 +34,18 @@
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJK-o1-Qza">
-                                        <rect key="frame" x="0.0" y="66.5" width="151" height="30"/>
-                                        <state key="normal" title="Set Default Label Text"/>
+                                        <rect key="frame" x="0.0" y="66.5" width="71" height="30"/>
+                                        <state key="normal" title="Get Image"/>
                                         <connections>
                                             <action selector="setDefaultLabelText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wyv-Vg-Qfb"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="312" placeholderIntrinsicHeight="312" translatesAutoresizingMaskIntoConstraints="NO" id="m3E-t7-mAr">
+                                        <rect key="frame" x="0.0" y="104.5" width="312" height="312"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="m3E-t7-mAr" secondAttribute="height" multiplier="1:1" id="qZq-Qo-hEz"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Thp-VX-8lF" secondAttribute="trailing" id="IHL-E4-25F"/>
@@ -55,6 +61,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="movieImage" destination="m3E-t7-mAr" id="ScM-Yr-VCS"/>
                         <outlet property="movieTitleLabel" destination="zSH-bp-r7P" id="z6W-uR-736"/>
                         <outlet property="movieTitleTF" destination="Thp-VX-8lF" id="Y4E-0r-BWm"/>
                     </connections>
