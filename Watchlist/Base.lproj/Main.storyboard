@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="emV-ai-jss">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mTP-zb-w9S">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Watched-->
         <scene sceneID="E7s-Zg-W1Y">
             <objects>
-                <tableViewController id="emV-ai-jss" sceneMemberID="viewController">
+                <tableViewController id="emV-ai-jss" customClass="MovieTableViewController" customModule="Watchlist" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mhG-hc-oFb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +27,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BNg-Fv-HiX">
-                                            <rect key="frame" x="98" y="11" width="42" height="21"/>
+                                            <rect key="frame" x="98" y="11" width="261" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -50,12 +50,19 @@
                             <outlet property="delegate" destination="emV-ai-jss" id="8Bu-0G-8IV"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Watched" id="u6X-uE-83U">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="R5J-vW-b1o">
+                            <connections>
+                                <segue destination="FNu-rb-wCy" kind="presentation" identifier="AddItem" id="eW0-SU-0Hm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fwe-NF-fSV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-610.39999999999998" y="133.5832083958021"/>
+            <point key="canvasLocation" x="328.80000000000001" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Movie-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Watchlist" customModuleProvider="target" sceneMemberID="viewController">
@@ -64,29 +71,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SVy-ZQ-BgJ">
-                                <rect key="frame" x="20" y="40" width="335" height="416.5"/>
+                                <rect key="frame" x="20" y="84" width="335" height="388"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSH-bp-r7P">
-                                        <rect key="frame" x="0.0" y="0.0" width="83.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Movie Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Thp-VX-8lF">
-                                        <rect key="frame" x="0.0" y="28.5" width="335" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJK-o1-Qza">
-                                        <rect key="frame" x="0.0" y="66.5" width="71" height="30"/>
-                                        <state key="normal" title="Get Image"/>
+                                        <rect key="frame" x="0.0" y="38" width="48" height="30"/>
+                                        <state key="normal" title="Search"/>
                                         <connections>
                                             <action selector="setDefaultLabelText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wyv-Vg-Qfb"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="312" placeholderIntrinsicHeight="312" translatesAutoresizingMaskIntoConstraints="NO" id="m3E-t7-mAr">
-                                        <rect key="frame" x="0.0" y="104.5" width="312" height="312"/>
+                                        <rect key="frame" x="0.0" y="76" width="312" height="312"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="m3E-t7-mAr" secondAttribute="height" multiplier="1:1" id="qZq-Qo-hEz"/>
                                         </constraints>
@@ -105,15 +106,63 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Add Movie" id="cb0-5B-rH2">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ivs-Z4-xqn"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="iTV-ab-w3W">
+                            <connections>
+                                <segue destination="qVr-SM-pG7" kind="unwind" unwindAction="unwindToMovieListWithSender:" id="aaX-gr-nU9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="movieImage" destination="m3E-t7-mAr" id="ScM-Yr-VCS"/>
-                        <outlet property="movieTitleLabel" destination="zSH-bp-r7P" id="z6W-uR-736"/>
                         <outlet property="movieTitleTF" destination="Thp-VX-8lF" id="Y4E-0r-BWm"/>
+                        <outlet property="saveButton" destination="iTV-ab-w3W" id="hZq-0n-LRH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="qVr-SM-pG7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+            <point key="canvasLocation" x="2015.2" y="133.5832083958021"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="uHo-hr-KUu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mTP-zb-w9S" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CIW-hh-17v">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="emV-ai-jss" kind="relationship" relationship="rootViewController" id="tO9-5B-VXN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mdk-T9-Rkg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-610.39999999999998" y="133.5832083958021"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="X03-wr-EAN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FNu-rb-wCy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YDZ-hg-ZsK">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="OeW-7h-m2W"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CGj-4Y-jU5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>

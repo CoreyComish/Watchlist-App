@@ -16,6 +16,8 @@
 		B52E6CF9226BA17700ABB5E3 /* WatchlistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52E6CF8226BA17700ABB5E3 /* WatchlistTests.swift */; };
 		B58BEDBC226C430000A3B9F6 /* TMDBSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58BEDB1226C42F200A3B9F6 /* TMDBSwift.framework */; };
 		B58BEDBD226C430000A3B9F6 /* TMDBSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B58BEDB1226C42F200A3B9F6 /* TMDBSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B5FE04B52283ACBC00B7CAF1 /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FE04B42283ACBC00B7CAF1 /* MovieTableViewController.swift */; };
+		B5FE04BC2283AEE900B7CAF1 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FE04BB2283AEE900B7CAF1 /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		B52E6CF8226BA17700ABB5E3 /* WatchlistTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistTests.swift; sourceTree = "<group>"; };
 		B52E6CFA226BA17700ABB5E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B58BEDA7226C42F200A3B9F6 /* TMDBSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TMDBSwift.xcodeproj; path = "../TheMovieDatabaseSwiftWrapper-master/TMDBSwift.xcodeproj"; sourceTree = "<group>"; };
+		B5FE04B42283ACBC00B7CAF1 /* MovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewController.swift; sourceTree = "<group>"; };
+		B5FE04BB2283AEE900B7CAF1 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 		B52E6CD7226BA17600ABB5E3 = {
 			isa = PBXGroup;
 			children = (
+				B5FE04BB2283AEE900B7CAF1 /* Movie.swift */,
 				B58BEDA7226C42F200A3B9F6 /* TMDBSwift.xcodeproj */,
 				B52E6CE2226BA17600ABB5E3 /* Watchlist */,
 				B52E6CF7226BA17700ABB5E3 /* WatchlistTests */,
@@ -154,6 +159,7 @@
 				B52E6CEA226BA17700ABB5E3 /* Assets.xcassets */,
 				B52E6CEC226BA17700ABB5E3 /* LaunchScreen.storyboard */,
 				B52E6CEF226BA17700ABB5E3 /* Info.plist */,
+				B5FE04B42283ACBC00B7CAF1 /* MovieTableViewController.swift */,
 			);
 			path = Watchlist;
 			sourceTree = "<group>";
@@ -334,9 +340,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5FE04B52283ACBC00B7CAF1 /* MovieTableViewController.swift in Sources */,
 				B52E6CE6226BA17600ABB5E3 /* ViewController.swift in Sources */,
 				B52E6CE4226BA17600ABB5E3 /* AppDelegate.swift in Sources */,
 				B505EA8E2277F0D500A8A345 /* MovieTableViewCell.swift in Sources */,
+				B5FE04BC2283AEE900B7CAF1 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
