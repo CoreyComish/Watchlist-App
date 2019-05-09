@@ -107,7 +107,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Movie" id="cb0-5B-rH2">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ivs-Z4-xqn"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ivs-Z4-xqn">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="mi0-E7-prS"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="iTV-ab-w3W">
                             <connections>
                                 <segue destination="qVr-SM-pG7" kind="unwind" unwindAction="unwindToMovieListWithSender:" id="aaX-gr-nU9"/>

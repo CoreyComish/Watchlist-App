@@ -25,6 +25,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         TMDBConfig.apikey = "ac6045995596442d0ad6f068b91f0cee"
         movieTitleTF.delegate = self
+        updateSaveButtonState()
     }
     
     // MARK: UITextFieldDelegate
@@ -34,10 +35,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disable the Save button while editing.
+        saveButton.isEnabled = false
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
+        updateSaveButtonState()
+        navigationItem.title = textField.text
     }
     
     // MARK: Navigation
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         super.prepare(for: segue, sender: sender)
@@ -52,7 +65,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let photo = movieImage.image
         
         // Set the meal to be passed to MealTableViewController after the unwind segue.
-        movie = Movie(name: name, photo: photo!)
+        movie = Movie(name: name, photo: photo)
     }
     
     // MARK: Actions
@@ -86,6 +99,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     }.resume()
             }
         }
+    }
+    
+    // MARK: Private Methods
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text field is empty.
+        let text = movieTitleTF.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
     }
     
 }

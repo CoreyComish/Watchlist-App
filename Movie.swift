@@ -13,11 +13,11 @@ class Movie {
     // MARK: Properties
     
     var name: String
-    var photo: UIImage;
+    var photo: UIImage?;
     
     // MARK: Init
     
-    init?(name:String, photo: UIImage)
+    init?(name:String, photo: UIImage? = nil)
     {
         if (name.isEmpty)
         {
