@@ -42,6 +42,7 @@
                                 <connections>
                                     <outlet property="movieImage" destination="CKV-j3-ctx" id="lkK-WL-GYw"/>
                                     <outlet property="nameLabel" destination="BNg-Fv-HiX" id="IaQ-7n-swR"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="Gtu-cu-qDc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -166,7 +167,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CGj-4Y-jU5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1170" y="503"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Gtu-cu-qDc"/>
+    </inferredMetricsTieBreakers>
 </document>

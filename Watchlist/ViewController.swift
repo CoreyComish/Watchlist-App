@@ -25,6 +25,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         TMDBConfig.apikey = "ac6045995596442d0ad6f068b91f0cee"
         movieTitleTF.delegate = self
+        if let movie = movie {
+            navigationItem.title = movie.name
+            movieTitleTF.text = movie.name
+            movieImage.image = movie.photo
+        }
         updateSaveButtonState()
     }
     
@@ -47,7 +52,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Navigation
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        let isPresentingInAddMovieMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddMovieMode {
+            dismiss(animated: true, completion: nil)
+        }
+        else if let owningNavigationController = navigationController{
+            owningNavigationController.popViewController(animated: true)
+        }
+        else {
+            fatalError("The ViewController is not inside a navigation controller.")
+        }
     }
     
     
