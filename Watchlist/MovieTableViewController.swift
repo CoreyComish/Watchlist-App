@@ -18,7 +18,10 @@ class MovieTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
-
+        
+        if let savedMovies = loadMovies() {
+            movies += savedMovies
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -66,9 +69,10 @@ class MovieTableViewController: UITableViewController {
             // Delete the row from the data source
             movies.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            saveMovies()
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
 
     /*
@@ -138,9 +142,21 @@ class MovieTableViewController: UITableViewController {
                 movies.append(movie)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
+            saveMovies()
         }
     }
     
     // MARK: Private Methods
-
+    
+    private func saveMovies() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(movies, toFile: Movie.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("Movies successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save movies...", log: OSLog.default, type: .error)
+        }
+    }
+    private func loadMovies() -> [Movie]?  {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Movie.ArchiveURL.path) as? [Movie]
+    }
 }
