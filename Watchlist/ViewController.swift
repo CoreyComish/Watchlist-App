@@ -78,6 +78,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         let name = movieTitleTF.text ?? ""
         let photo = movieImage.image
+        let rating = ratingControl.rating
         
         // Set the meal to be passed to MealTableViewController after the unwind segue.
         movie = Movie(name: name, photo: photo, rating: rating)

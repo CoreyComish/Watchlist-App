@@ -46,6 +46,7 @@
                                 <connections>
                                     <outlet property="movieImage" destination="CKV-j3-ctx" id="lkK-WL-GYw"/>
                                     <outlet property="nameLabel" destination="BNg-Fv-HiX" id="IaQ-7n-swR"/>
+                                    <outlet property="ratingControl" destination="LdQ-wQ-q12" id="NHS-Zf-uWQ"/>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="Gtu-cu-qDc"/>
                                 </connections>
                             </tableViewCell>

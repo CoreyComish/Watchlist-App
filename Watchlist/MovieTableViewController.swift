@@ -48,6 +48,7 @@ class MovieTableViewController: UITableViewController {
         // Configure the cell...
         cell.nameLabel.text = movie.name
         cell.movieImage.image = movie.photo
+        cell.ratingControl.rating = movie.rating
 
         return cell
     }
