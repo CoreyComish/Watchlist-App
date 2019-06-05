@@ -37,6 +37,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
+                                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LdQ-wQ-q12" customClass="RatingControl" customModule="Watchlist" customModuleProvider="target">
+                                            <rect key="frame" x="98" y="40" width="252" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </stackView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -71,8 +75,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SVy-ZQ-BgJ">
-                                <rect key="frame" x="20" y="84" width="335" height="388"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SVy-ZQ-BgJ">
+                                <rect key="frame" x="20" y="84" width="335" height="446"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Movie Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Thp-VX-8lF">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
@@ -81,18 +85,26 @@
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJK-o1-Qza">
-                                        <rect key="frame" x="0.0" y="38" width="48" height="30"/>
+                                        <rect key="frame" x="143.5" y="38" width="48" height="30"/>
                                         <state key="normal" title="Search"/>
                                         <connections>
                                             <action selector="setDefaultLabelText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wyv-Vg-Qfb"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="312" placeholderIntrinsicHeight="312" translatesAutoresizingMaskIntoConstraints="NO" id="m3E-t7-mAr">
-                                        <rect key="frame" x="0.0" y="76" width="312" height="312"/>
+                                        <rect key="frame" x="11.5" y="76" width="312" height="312"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="m3E-t7-mAr" secondAttribute="height" multiplier="1:1" id="qZq-Qo-hEz"/>
                                         </constraints>
                                     </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YNI-eC-xXQ" customClass="RatingControl" customModule="Watchlist" customModuleProvider="target">
+                                        <rect key="frame" x="41.5" y="396" width="252" height="50"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="starCount">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Thp-VX-8lF" secondAttribute="trailing" id="IHL-E4-25F"/>
@@ -122,6 +134,7 @@
                     <connections>
                         <outlet property="movieImage" destination="m3E-t7-mAr" id="ScM-Yr-VCS"/>
                         <outlet property="movieTitleTF" destination="Thp-VX-8lF" id="Y4E-0r-BWm"/>
+                        <outlet property="ratingControl" destination="YNI-eC-xXQ" id="zUD-b5-5og"/>
                         <outlet property="saveButton" destination="iTV-ab-w3W" id="hZq-0n-LRH"/>
                     </connections>
                 </viewController>

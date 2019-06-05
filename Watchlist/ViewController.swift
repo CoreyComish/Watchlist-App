@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var movieTitleTF: UITextField!
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
+    @IBOutlet weak var ratingControl: RatingControl!
     
     var movie : Movie?
     
@@ -80,7 +80,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let photo = movieImage.image
         
         // Set the meal to be passed to MealTableViewController after the unwind segue.
-        movie = Movie(name: name, photo: photo)
+        movie = Movie(name: name, photo: photo, rating: rating)
     }
     
     // MARK: Actions

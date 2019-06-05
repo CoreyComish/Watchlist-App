@@ -13,19 +13,25 @@ class Movie {
     // MARK: Properties
     
     var name: String
-    var photo: UIImage?;
+    var photo: UIImage?
+    var rating: Int
     
     // MARK: Init
     
-    init?(name:String, photo: UIImage? = nil)
+    init?(name:String, photo: UIImage? = nil, rating: Int)
     {
-        if (name.isEmpty)
+        if (name.isEmpty || rating < 0)
         {
+            return nil
+        }
+        
+        guard (rating >= 0) && (rating <= 5) else {
             return nil
         }
         
         self.name = name;
         self.photo = photo;
+        self.rating = rating;
     }
 }
 
