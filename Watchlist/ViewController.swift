@@ -79,7 +79,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let photo = movieImage.image
         let rating = ratingControl.rating
         
-        // Set the meal to be passed to MealTableViewController after the unwind segue.
+        // Set the movie to be passed to MovieTableViewController after the unwind segue.
         movie = Movie(name: name, photo: photo, rating: rating)
     }
     
@@ -87,8 +87,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func setDefaultLabelText(_ sender: UIButton) {
         SearchMDB.movie(query: movieTitleTF.text!, language: "en", page: 1, includeAdult: true, year: 0, primaryReleaseYear: 0){
             data, wrds in
-            let search = wrds?[0].id;
-            self.setImage(id: search!);
+            if (wrds?.count)! > 0 {
+                let search = wrds?[0].id
+                self.setImage(id: search!)
+                self.movieTitleTF.text = wrds?[0].title
+            }
         }
     }
     
