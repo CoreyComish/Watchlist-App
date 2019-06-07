@@ -14,6 +14,8 @@ class MovieTableViewController: UITableViewController {
     // MARK: Properties
     
     var movies = [Movie]()
+    var filteredMovies = [Movie]()
+    let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +24,11 @@ class MovieTableViewController: UITableViewController {
         if let savedMovies = loadMovies() {
             movies += savedMovies
         }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Movies"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
 
     // MARK: - Table view data source
@@ -38,6 +40,9 @@ class MovieTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if isFiltering() {
+            return filteredMovies.count
+        }
         return movies.count
     }
 
@@ -45,14 +50,16 @@ class MovieTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "MovieTableViewCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? MovieTableViewCell else {fatalError("The dequeued cell is not an instance of MovieTableViewCell.")}
-        
-        let movie = movies[indexPath.row]
-
+        let movie: Movie
+        if isFiltering() {
+            movie = filteredMovies[indexPath.row]
+        } else {
+            movie = movies[indexPath.row]
+        }
         // Configure the cell...
         cell.nameLabel.text = movie.name
         cell.movieImage.image = movie.photo
         cell.ratingControl.rating = movie.rating
-
         return cell
     }
 
@@ -158,5 +165,28 @@ class MovieTableViewController: UITableViewController {
     }
     private func loadMovies() -> [Movie]?  {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Movie.ArchiveURL.path) as? [Movie]
+    }
+    
+    private func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    private func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredMovies = movies.filter({( movie : Movie) -> Bool in
+            return movie.name.lowercased().contains(searchText.lowercased())
+        })
+        
+        tableView.reloadData()
+    }
+    
+    private func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+
+}
+extension MovieTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
     }
 }
